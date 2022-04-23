@@ -1,0 +1,13 @@
+{
+    "0400": { // Unicode code for the character
+        "start": 0, // Start pixel for the character
+        "end": 10 // End pixel for the character
+        /*
+        These positions are the local pixels in your glyph font sheets, such that 0 is the left-most pixel of the character's tile and 15 is the right-most.
+        If both the starting and ending positions are the same number, the width will be 1 EXCEPT if the positions are 0, in which case the width will be 0 and the character will not display.
+        Thus if you have a 1-pixel-wide character, it cannot be in the left-most position of its tile.
+
+        Source: https://skylinerw.com/glyphsizes/
+        */
+    }
+}
