@@ -6,4 +6,4 @@ It can also generate a json file containing the glyph sizes from a glyph_sizes.b
 
 ## Usage:
 
-`<script> [filename] (--reverse/-r U+XXXX U+XXXX ...) (--help/-h/--?/-?)`
+`<script> [filename] (--reverse/-r [filename] U+XXXX U+XXXX ...) (--help/-h/--?/-?)`

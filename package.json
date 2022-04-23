@@ -1,6 +1,6 @@
 {
     "name": "glyphsizesgen",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "./dist/index.js",
     "description": "Generate a glyph_sizes.bin file for Minecraft Unicode fonts",
     "author": {

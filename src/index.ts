@@ -82,7 +82,7 @@ const reverse = async () => {
 
 	for (const [i, value] of binary.entries()) {
 		if (expandedRanges.includes(i)) {
-			const valueString = value.toString(16),
+			const valueString = value < 16 ? `0${value.toString(16)}` : value.toString(16),
 				start = parseInt(valueString[0], 16),
 				end = parseInt(valueString[1], 16)
 
@@ -95,7 +95,7 @@ const reverse = async () => {
 
 const help = () =>
 	console.log(`Usage:
-	<script> [filename] (--reverse/-r U+XXXX U+XXXX ...) (--help/-h/--?/-?)
+	<script> [filename] (--reverse/-r [filename] U+XXXX U+XXXX ...) (--help/-h/--?/-?)
 
 Without --reverse:
 	Reads the json file with the glyph sizes and writes the binary file with the glyph sizes
