@@ -17,6 +17,6 @@
     },
     "scripts": {
         "start": "rimraf dist/ && tsc && node dist/index.js",
-        "prepublish": "rimraft dist/ && tsc"
+        "prepublish": "rimraf dist/ && tsc"
     }
 }
