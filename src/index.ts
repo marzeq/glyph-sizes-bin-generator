@@ -93,14 +93,7 @@ const reverse = async () => {
 	await jsonc.write(writeFile, content)
 }
 
-const help = () =>
-	console.log(`Usage:
-	<script> [filename] (--reverse/-r [filename] U+XXXX U+XXXX ...) (--help/-h/--?/-?)
-
-Without --reverse:
-	Reads the json file with the glyph sizes and writes the binary file with the glyph sizes
-With --reverse:
-	Reads the binary file with the glyph sizes and writes the json file with the glyph sizes for the given Unicode ranges`)
+const help = () => console.log(`Usage: Read the README.md file for the usage instructions`)
 
 if (process.argv[2] === "--reverse" || process.argv[2] === "-r") reverse().catch(console.error)
 else if (process.argv.some(s => s === "--help" || s === "-h" || s === "--?" || s === "-?")) help()
