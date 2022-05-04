@@ -1,6 +1,5 @@
 import { readFile, writeFile } from "fs/promises"
 import { join } from "path"
-import { jsonc } from "jsonc"
 
 type GlyphSizesJson<parsed = boolean> = {
 	[key in parsed extends true ? number : string | number]: { start: number; end: number }
@@ -13,7 +12,7 @@ const main = async () => {
 		process.exit(1)
 	}
 
-	const content: GlyphSizesJson<false> = await jsonc.read(process.argv[2])
+	const content: GlyphSizesJson<false> = await readJsonc(process.argv[2])
 
 	Object.keys(content).forEach(key => {
 		const values = content[key]
@@ -49,7 +48,7 @@ const reverse = async () => {
 	let remainingArgs = process.argv.slice(3)
 
 	const binaryFile = remainingArgs[0],
-		writeFile = remainingArgs[1]
+		destinationFile = remainingArgs[1]
 
 	remainingArgs = remainingArgs.slice(2)
 
@@ -90,7 +89,18 @@ const reverse = async () => {
 		}
 	}
 
-	await jsonc.write(writeFile, content)
+	await writeFile(destinationFile, JSON.stringify(content))
+}
+
+const removeCommentsFromJson = (json: string) => {
+	json = json.replace(/\/\/.*\n/g, "\n")
+	json = json.replace(/\/\*[\s\S]*?\*\//g, "")
+	return json
+}
+
+const readJsonc = async <T>(file: string): Promise<T> => {
+	const content = await readFile(file, "utf8")
+	return JSON.parse(removeCommentsFromJson(content))
 }
 
 const help = () => console.log(`Usage: Read the README.md file for the usage instructions`)
