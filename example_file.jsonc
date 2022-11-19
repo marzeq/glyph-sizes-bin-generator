@@ -1,5 +1,5 @@
 {
-    "0400": { // Unicode code for the character
+    "ą": { // Character
         "start": 0, // Start pixel for the character
         "end": 10 // End pixel for the character
         /*
@@ -9,5 +9,9 @@
 
         Source: https://skylinerw.com/glyphsizes/
         */
+    },
+    "0400": { // Can also use Unicode codepoints (hex)
+        "start": 0,
+        "end": 10
     }
 }

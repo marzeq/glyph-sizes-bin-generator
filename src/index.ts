@@ -15,9 +15,18 @@ const main = async () => {
 	const content: GlyphSizesJson<false> = await readJsonc(process.argv[2])
 
 	Object.keys(content).forEach(key => {
-		const values = content[key]
-		delete content[key]
-		content[parseInt(key, 16)] = values
+		const parsed = parseInt(key, 16)
+
+		if (!isNaN(parsed)) {
+			content[parsed] = content[key]
+			delete content[key]
+		} else if (key.length === 1) {
+			content[key.charCodeAt(0)] = content[key]
+			delete content[key]
+		} else {
+			console.error(`Invalid key: ${key}`)
+			process.exit(1)
+		}
 	})
 
 	const parsedContent: GlyphSizesJson<true> = content,
