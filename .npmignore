@@ -2,6 +2,5 @@ src/
 .prettierrc
 .gitignore
 example_file.jsonc
-glyph_sizes.*
 tsconfig.json
 yarn.lock
